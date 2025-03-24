@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #c2c3b1;
+}
+
+.container {
+  background-color: whitesmoke;
+  border-radius: 7px 7px 0 0;
+  text-align: center;
+  max-width: 40%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+#toDoListID {
+  border: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 300px;
+  border-radius: 4px 0 0 4px;
+}
+#toDoListID:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+#btnID {
+  margin-left: -4px;
+  padding: 5px;
+  width: 60px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+#btnID:hover {
+  background-color: rgb(12, 237, 12);
+}
+
+.container > h1 {
+  padding: 10px 0 10px 0;
+}
+
+span {
+  display: block;
+  word-break: break-word;
+  text-align: center;
+  margin-bottom: 20px;
+
+  outline: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-container > button {
+  cursor: pointer;
+  padding: 5px 20px 5px 20px;
+  border-radius: 3px;
+  border: none;
+  font-size: 1rem;
+}
+
+.button-container > button:active {
+  background-color: rgb(250, 251, 250);
+  transition: 0.1s;
+}
+
+ul > li {
+  background-color: rgb(77, 42, 165);
+  list-style: none;
+  line-height: 25px;
+  margin: 10px 0 0 0;
+  padding: 7px;
+  border-radius: 7px;
+
+  font-size: 1.2rem;
+}

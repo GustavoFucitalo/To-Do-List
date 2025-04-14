@@ -6,7 +6,8 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-main {
+
+body {
   min-height: 100vh;
   height: auto;
 
@@ -16,6 +17,21 @@ main {
   align-items: center;
 
   background: #c2c3b1;
+}
+
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+#darkModeBtn {
+  background-color: #333;
+  color: #ddd;
+
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 5px;
+  border: 0 none;
 }
 
 .container {
@@ -141,4 +157,18 @@ ul > li {
   max-width: 400px;
 
   font-size: 1.2rem;
+}
+
+body.dark-mode .container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode #btnID {
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode ul > li {
+  background-color: #333;
+  color: #ddd;
 }

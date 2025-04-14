@@ -120,3 +120,20 @@ function clearInput() {
   input.value = "";
   alert("Valor apagado!");
 }
+
+function funcDarkMode() {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("modo", "dark");
+  } else {
+    localStorage.setItem("modo", "light");
+  }
+}
+
+window.onload = () => {
+  if (localStorage.getItem("modo") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+};

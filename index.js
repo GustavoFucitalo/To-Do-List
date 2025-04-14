@@ -8,7 +8,7 @@ function addTask() {
 
   if (taskText === "") return;
 
-  const li = createTaskElement(taskText);
+  const li = createTaskElement(taskText, false);
   myUL.appendChild(li);
 
   saveTasks();
@@ -16,11 +16,24 @@ function addTask() {
   input.value = "";
 }
 
-function createTaskElement(taskText) {
+input.addEventListener("keypress", (evt) => {
+  if (evt.key === "Enter") {
+    addTask();
+  }
+});
+
+function createTaskElement(taskText, isChecked = false) {
   const li = document.createElement("li");
 
   const span = document.createElement("span");
   span.textContent = taskText;
+
+  const checkBox = document.createElement("input");
+  checkBox.type = "checkbox";
+  checkBox.classList.add("myCheckBox");
+  checkBox.checked = isChecked;
+
+  checkBox.addEventListener("change", saveTasks);
 
   const buttonContainer = document.createElement("div");
   buttonContainer.classList.add("button-container");
@@ -39,7 +52,7 @@ function createTaskElement(taskText) {
   });
 
   buttonContainer.append(editButton, saveButton, removeButton);
-  li.append(span, buttonContainer);
+  li.append(checkBox, span, buttonContainer);
 
   return li;
 }
@@ -71,21 +84,28 @@ function saveTasks() {
     tasks.push(span.textContent);
   });
 
+  const checkBoxSave = [];
+  document.querySelectorAll("input.myCheckBox").forEach((checkbox) => {
+    checkBoxSave.push(checkbox.checked);
+  });
+
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("checkboxes", JSON.stringify(checkBoxSave));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedValue = localStorage.getItem("inputValue");
-
   if (savedValue) {
     input.value = savedValue;
   }
 
   const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const savedCheckBoxes = JSON.parse(localStorage.getItem("checkboxes")) || [];
 
-  savedTasks.forEach((task) => {
-    const myUl = document.querySelector("#myUl");
-    const li = createTaskElement(task);
+  const myUl = document.querySelector("#myUl");
+
+  savedTasks.forEach((task, index) => {
+    const li = createTaskElement(task, savedCheckBoxes[index] || false);
     myUl.appendChild(li);
   });
 });

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@media (max-width: 480px) {
+  .container {
+    width: 200px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    min-height: 150px;
+  }
+}
